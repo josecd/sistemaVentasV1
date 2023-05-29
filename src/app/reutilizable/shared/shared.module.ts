@@ -30,7 +30,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MomentDateModule } from "@angular/material-moment-adapter";
 
 
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -61,7 +61,9 @@ import { MomentDateModule } from "@angular/material-moment-adapter";
     MatAutocompleteModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MomentDateModule
+    MomentDateModule,
+    MatListModule,
+    MatGridListModule
   ],
   providers:[
     MatDatepickerModule,
