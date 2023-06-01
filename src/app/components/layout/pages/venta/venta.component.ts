@@ -52,11 +52,7 @@ export class VentaComponent implements OnInit{
 
     this._producto.lista().subscribe({
       next:(data)=>{
-        console.log(data);
-
         if (data.status) {
-          console.log(data);
-
           const lista = data.value as Producto[];
           this.listaProductos = lista.filter(p=>p.esActivo == 1 && p.stock >0);
         }
@@ -66,8 +62,6 @@ export class VentaComponent implements OnInit{
 
     this.formularioProductoVenta.get('producto')?.valueChanges.subscribe(value=>{
       this.listaProductosFiltro = this.retomarProductosPorFiltro(value);
-      console.log('Lista de productos', this.listaProductosFiltro);
-
     })
 
 
@@ -85,16 +79,11 @@ export class VentaComponent implements OnInit{
   }
 
   agregarProductoParaVenta(){
-    console.log('formulario', this.formularioProductoVenta);
-    console.log('formulario', this.formularioProductoVenta.value.precio);
-
-
     const _cantidad:number = this.formularioProductoVenta.value.cantidad;
     const _precio:number = parseFloat(this.productoSeleccionado.precio);
     const _total:number = _cantidad * _precio;
 
     this.totalPagar = this.totalPagar + _total;
-    console.log('----------',this.productoSeleccionado  );
 
     this.listaProductosParaVenta.push({
       idProducto: this.productoSeleccionado.idProducto,
@@ -103,8 +92,6 @@ export class VentaComponent implements OnInit{
       precioTexto: String(_precio.toFixed(2)),
       totalTexto:  String(_total.toFixed(2))
     })
-
-    console.log(this.listaProductosParaVenta);
 
     this.datoDetalleVenta = new MatTableDataSource(this.listaProductosParaVenta);
     this.formularioProductoVenta.patchValue({
@@ -131,7 +118,6 @@ export class VentaComponent implements OnInit{
       this._venta.registrar(request).subscribe({
         next:(response)=>{
           if (response.status) {
-            console.log(response);
 
             this.totalPagar = 0.00;
             this.listaProductosParaVenta =[];

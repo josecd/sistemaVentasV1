@@ -58,8 +58,6 @@ export class ModalUsuarioComponent implements OnInit   {
 
   ngOnInit(){
     if (this.datosUsuario != null) {
-      console.log(this.datosUsuario);
-
       this.formularioUsuario.patchValue({
         nombreCompleto:this.datosUsuario.nombreCompleto,
         correo: this.datosUsuario.correo,
@@ -82,7 +80,6 @@ export class ModalUsuarioComponent implements OnInit   {
     }
 
     if (this.datosUsuario == null) {
-      console.log(_usuario);
 
       this._usuario.guardar(_usuario).subscribe({
         next:(data)=>{

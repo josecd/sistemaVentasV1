@@ -36,10 +36,8 @@ export class LoginComponent {
     }
     this._usuario.iniciarSesion(request).subscribe({
       next:(data)=>{
-        console.log(data);
 
         if (data.status) {
-          console.log(data);
 
           this._utilidad.guardarSesionUsuario(data.value)
           this.router.navigate(["pages"])
