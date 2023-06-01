@@ -4,6 +4,15 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+
+    <span style="flex:1 1 auto"></span>
+    <label style="font-size: 14px; margin-right: 20px;">{{correUsuario}} | {{rolUsuario }}</label>
+
+    <button mat-icon-button (click)="cerrarSesion()">
+      <mat-icon>
+        logout
+      </mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -11,35 +20,12 @@
   <mat-sidenav #sidenav opened="true" mode="side" style="width: 200px">
     <mat-nav-list>
 
-      <mat-list-item routerLink="/pages/dashboard">
-        <mat-icon matListItemIcon>dashboard</mat-icon>
-        <a mat-line>DashBoard</a>
+
+      <mat-list-item *ngFor="let item of listaMenus" [routerLink]="item.url">
+        <mat-icon matListItemIcon>{{item.icono}}</mat-icon>
+        <a mat-line>{{item.nombre}}</a>
       </mat-list-item>
 
-      <mat-list-item routerLink="/pages/usuarios">
-        <mat-icon matListItemIcon>group</mat-icon>
-        <a mat-line>Usuarios</a>
-      </mat-list-item>
-
-      <mat-list-item routerLink="/pages/productos">
-        <mat-icon matListItemIcon>collections_bookmark</mat-icon>
-        <a mat-line>Productos</a>
-      </mat-list-item>
-
-      <mat-list-item routerLink="/pages/venta">
-        <mat-icon matListItemIcon>currency_exchange</mat-icon>
-        <a mat-line>Venta</a>
-      </mat-list-item>
-
-      <mat-list-item routerLink="/pages/hitorial_venta">
-        <mat-icon matListItemIcon>edit_note</mat-icon>
-        <a mat-line>Historial ventas</a>
-      </mat-list-item>
-
-      <mat-list-item routerLink="/pages/reportes">
-        <mat-icon matListItemIcon>receipt</mat-icon>
-        <a mat-line>Reportes</a>
-      </mat-list-item>
 
     </mat-nav-list>
   </mat-sidenav>
